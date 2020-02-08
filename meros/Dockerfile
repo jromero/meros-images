@@ -8,12 +8,11 @@ RUN apt-get update && apt-get install -y \
     autoconf \
     automake \
     libtool \
-    at-spi2-core \
     curl
 RUN git clone https://github.com/MerosCrypto/Meros && \
     cd Meros && \
     nimble build -y -d:nogui
 
-FROM ubuntu:bionic
+FROM ubuntu:devel
 COPY --from=builder ./Meros/build/Meros .
 CMD ["./Meros"]

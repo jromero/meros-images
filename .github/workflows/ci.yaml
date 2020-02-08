@@ -1,19 +1,37 @@
-name: Docker Build
+name: build
 
 on: [push]
 
 jobs:
-  build:
+  meros:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Docker Build
         run: docker build ./meros/ -t docker.pkg.github.com/jromero/meros-images/meros:latest
       - name: Docker Login
+        if: github.ref == 'refs/heads/master'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ github.token }}
       - name: Docker Publish
+        if: github.ref == 'refs/heads/master'
         run: docker push docker.pkg.github.com/jromero/meros-images/meros:latest
+  mineros:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Build
+        run: docker build ./mineros/ -t docker.pkg.github.com/jromero/meros-images/mineros:latest
+      - name: Docker Login
+        if: github.ref == 'refs/heads/master'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+      - name: Docker Publish
+        if: github.ref == 'refs/heads/master'
+        run: docker push docker.pkg.github.com/jromero/meros-images/mineros:latest
