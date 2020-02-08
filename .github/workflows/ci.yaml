@@ -1,0 +1,19 @@
+name: Docker Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Build
+        run: docker build ./meros/ -t docker.pkg.github.com/jromero/meros-images/meros:latest
+      - name: Docker Login
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+      - name: Docker Publish
+        run: docker push docker.pkg.github.com/jromero/meros-images/meros:latest
