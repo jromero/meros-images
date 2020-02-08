@@ -11,3 +11,7 @@ Docker images for the Meros cryptocurrency
 mkdir data
 docker run --rm -it -p 5132:5132 -p 5133:5133 -v $PWD/data/:/data/ jar013/meros:latest
 ```
+
+## Image: Mineros
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/jar013/mineros)](https://hub.docker.com/r/jar013/mineros)
