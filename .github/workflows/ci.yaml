@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker Build
-        run: docker build ./meros/ -t docker.pkg.github.com/jromero/meros-images/meros:latest
+        run: docker build ./meros/ -t jar013/meros:latest
       - name: Docker Login
         if: github.ref == 'refs/heads/master'
         uses: azure/docker-login@v1
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker Build
-        run: docker build ./mineros/ -t docker.pkg.github.com/jromero/meros-images/mineros:latest
+        run: docker build ./mineros/ -t jar013/mineros:latest
       - name: Docker Login
         if: github.ref == 'refs/heads/master'
         uses: azure/docker-login@v1
