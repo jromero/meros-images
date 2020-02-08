@@ -13,12 +13,11 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: azure/docker-login@v1
         with:
-          login-server: docker.pkg.github.com
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
+          username: jar013
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Docker Publish
         if: github.ref == 'refs/heads/master'
-        run: docker push docker.pkg.github.com/jromero/meros-images/meros:latest
+        run: docker push jar013/meros:latest
   mineros:
     runs-on: ubuntu-latest
     steps:
@@ -29,9 +28,8 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: azure/docker-login@v1
         with:
-          login-server: docker.pkg.github.com
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
+          username: jar013
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Docker Publish
         if: github.ref == 'refs/heads/master'
-        run: docker push docker.pkg.github.com/jromero/meros-images/mineros:latest
+        run: docker push jar013/mineros:latest
