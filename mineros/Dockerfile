@@ -18,4 +18,4 @@ RUN git clone https://github.com/MerosCrypto/Mineros && \
 
 FROM ubuntu:devel
 COPY --from=builder ./Mineros/build/Mineros .
-CMD ["./Mineros"]
+ENTRYPOINT ["./Mineros"]

@@ -15,4 +15,4 @@ RUN git clone https://github.com/MerosCrypto/Meros && \
 
 FROM ubuntu:devel
 COPY --from=builder ./Meros/build/Meros .
-CMD ["./Meros"]
+ENTRYPOINT ["./Meros"]
