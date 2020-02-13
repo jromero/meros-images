@@ -13,7 +13,7 @@ jobs:
                 if: github.ref == 'refs/heads/master'
                 uses: azure/docker-login@v1
                 with:
-                    username: meroscrypto
+                    username: merosmaintainers
                     password: ${{ secrets.DOCKER_PASSWORD }}
             -   name: Docker Publish
                 if: github.ref == 'refs/heads/master'
@@ -28,7 +28,7 @@ jobs:
                 if: github.ref == 'refs/heads/master'
                 uses: azure/docker-login@v1
                 with:
-                    username: meroscrypto
+                    username: merosmaintainers
                     password: ${{ secrets.DOCKER_PASSWORD }}
             -   name: Docker Publish
                 if: github.ref == 'refs/heads/master'
